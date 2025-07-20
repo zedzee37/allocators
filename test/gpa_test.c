@@ -7,11 +7,11 @@ int main() {
 	GPA *gpa = init_gpa();
 	EXPECT(gpa != NULL);
 
-	int *a = allocator_alloc(&gpa->allocator, sizeof(int));
+	int *a = allocator_alloc(ALLOCATOR(gpa), sizeof(int));
 	EXPECT(a != NULL);
 	*a = 10;
 	EXPECT(*a == 10);
-	allocator_free(&gpa->allocator, a);
+	allocator_free(ALLOCATOR(gpa), a);
 
 	deinit_gpa(gpa);
 	return 0;

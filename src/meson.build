@@ -1,6 +1,7 @@
 src = [
   'allocator.c',
-  'gpa.c'
+  'gpa.c',
+  'arena.c',
 ]
 
 allocators_library = static_library(

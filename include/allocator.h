@@ -3,11 +3,15 @@
 
 #include <stddef.h>
 
-typedef void *(*AllocFunc)(size_t size);
-typedef void (*FreeFunc)(void *addr);
-typedef void *(*ReallocFunc)(void *addr, size_t new_size);
+#define ALLOCATOR(alloc) (Allocator *)alloc
 
-typedef struct {
+typedef struct Allocator Allocator;
+
+typedef void *(*AllocFunc)(Allocator *allocator, size_t size);
+typedef void (*FreeFunc)(Allocator *allocator, void *addr);
+typedef void *(*ReallocFunc)(Allocator *allocator, void *addr, size_t new_size);
+
+typedef struct Allocator {
 	AllocFunc alloc_func;
 	FreeFunc free_func;
 	ReallocFunc realloc_func;

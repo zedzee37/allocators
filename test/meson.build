@@ -4,5 +4,8 @@
 deps = [allocators_dep]
 
 gpa_exe = executable('gpa_test', 'gpa_test.c', dependencies: deps)
-test('gpa test', gpa_exe)
+test('gpatest', gpa_exe)
+
+arena_exe = executable('arena_test', 'arena_test.c', dependencies: deps)
+test('arenatest', arena_exe)
 
